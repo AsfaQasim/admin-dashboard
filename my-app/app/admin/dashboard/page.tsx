@@ -8,6 +8,7 @@ import ProtectedRoute from "@/app/components/protectedRoute";
 
 interface CartItem {
   product: {
+    image: any;
     _id: string;
     title: string;
     imageUrl?: string;
@@ -26,6 +27,7 @@ interface Order {
   orderDate: string;
   status: string | null;
   city: string;
+  imageUrl: string;
   cartItems: CartItem[];
 }
 
@@ -49,6 +51,8 @@ export default function AdminDashboard() {
           orderDate,
           status,
           total,
+
+        
           cartItems[] {
             product->{
               _id,
@@ -64,7 +68,7 @@ export default function AdminDashboard() {
       })
       .catch((error) => console.error("Error fetching orders:", error));
   }, []);
-
+console.log(orders)
   const filterOrders =
     filter === "All" ? orders : orders.filter((order) => order.status === filter);
 
@@ -261,9 +265,9 @@ export default function AdminDashboard() {
                         key={index}
                         className="w-24 h-24 border rounded-lg overflow-hidden shadow-sm"
                       >
-                        {item.product?.imageUrl ? (
+                        {item.product?.imageUrl? (
                           <img
-                            src={item.product.imageUrl}
+                            src={item.product?.imageUrl}
                             alt={item.product?.title}
                             className="w-full h-full object-cover"
                           />
