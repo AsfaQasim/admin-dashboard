@@ -1,9 +1,10 @@
 "use client";
-import ProtectedRoute from "@/app/components/protectedRoute.tsx/protectedRoute";
+
 import { client } from "@/sanity/lib/client";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { FaTrash, FaCheck, FaTruck, FaTimes } from "react-icons/fa";
+import ProtectedRoute from "@/app/components/protectedRoute";
 
 interface CartItem {
   product: {
