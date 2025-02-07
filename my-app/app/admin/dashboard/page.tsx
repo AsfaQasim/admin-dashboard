@@ -7,12 +7,9 @@ import { FaTrash, FaCheck, FaTruck, FaTimes } from "react-icons/fa";
 import ProtectedRoute from "@/app/components/protectedRoute";
 
 interface CartItem {
-  product: {
-    image: any;
     _id: string;
     title: string;
     imageUrl?: string;
-  };
 }
 
 interface Order {
@@ -51,15 +48,11 @@ export default function AdminDashboard() {
           orderDate,
           status,
           total,
-
-        
-          cartItems[] {
-            product->{
+          cartItems[]-> {
               _id,
               title,
               "imageUrl": image.asset->url
             }
-          }
         }`
       )
       .then((data) => {
@@ -68,7 +61,7 @@ export default function AdminDashboard() {
       })
       .catch((error) => console.error("Error fetching orders:", error));
   }, []);
-console.log(orders)
+  console.log(orders)
   const filterOrders =
     filter === "All" ? orders : orders.filter((order) => order.status === filter);
 
@@ -142,9 +135,8 @@ console.log(orders)
             {["All", "pending", "success", "dispatch"].map((status) => (
               <button
                 key={status}
-                className={`block w-full text-left px-4 py-2 rounded-lg text-sm transition-all ${
-                  filter === status ? "bg-white text-red-600 font-bold" : "text-white hover:bg-red-500"
-                }`}
+                className={`block w-full text-left px-4 py-2 rounded-lg text-sm transition-all ${filter === status ? "bg-white text-red-600 font-bold" : "text-white hover:bg-red-500"
+                  }`}
                 onClick={() => setFilter(status)}
               >
                 {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -181,13 +173,12 @@ console.log(orders)
                     <td className="px-6 py-4 text-sm text-gray-500">${order.total}</td>
                     <td className="px-6 py-4 text-sm">
                       <span
-                        className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                          order.status === "pending"
+                        className={`px-2 py-1 text-xs font-semibold rounded-full ${order.status === "pending"
                             ? "bg-yellow-100 text-yellow-800"
                             : order.status === "success"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-blue-100 text-blue-800"
-                        }`}
+                              ? "bg-green-100 text-green-800"
+                              : "bg-blue-100 text-blue-800"
+                          }`}
                       >
                         {order.status}
                       </span>
@@ -230,7 +221,7 @@ console.log(orders)
           {/* Order Details Modal */}
           {selectedOrder && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-              <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3">
+              <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 text-zinc-400">
                 <div className="flex justify-between items-center">
                   <h2 className="text-xl font-semibold">Order Details</h2>
                   <button
@@ -265,10 +256,10 @@ console.log(orders)
                         key={index}
                         className="w-24 h-24 border rounded-lg overflow-hidden shadow-sm"
                       >
-                        {item.product?.imageUrl? (
+                        {item.imageUrl ? (
                           <img
-                            src={item.product?.imageUrl}
-                            alt={item.product?.title}
+                            src={item.imageUrl}
+                            alt={item.title}
                             className="w-full h-full object-cover"
                           />
                         ) : (
@@ -276,7 +267,7 @@ console.log(orders)
                             No Image
                           </div>
                         )}
-                        <p className="text-xs text-center mt-1">{item.product?.title || "No Title"}</p>
+                        <p className="text-xs text-center mt-1">{item.title || "No Title"}</p>
                       </div>
                     ))
                   ) : (
