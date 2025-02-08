@@ -56,7 +56,7 @@ export default function AdminDashboard() {
         }`
       )
       .then((data) => {
-        console.log("Fetched Orders:", data); // Debugging log
+        console.log("Fetched Orders:", data); 
         setOrders(data);
       })
       .catch((error) => console.error("Error fetching orders:", error));
