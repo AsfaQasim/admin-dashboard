@@ -152,11 +152,11 @@ export default function AdminDashboard() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">ID</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">Customer</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">Total</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">Actions</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -166,11 +166,11 @@ export default function AdminDashboard() {
                     className="hover:bg-gray-100 cursor-pointer"
                     onClick={() => setSelectedOrder(order)}
                   >
-                    <td className="px-6 py-4 text-sm text-gray-500">{order._id}</td>
-                    <td className="px-6 py-4 text-sm text-gray-500">
+                    <td className="px-6 py-4 text-sm text-black">{order._id}</td>
+                    <td className="px-6 py-4 text-sm text-black">
                       {order.firstName} {order.lastName}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-500">${order.total}</td>
+                    <td className="px-6 py-4 text-sm text-black">${order.total}</td>
                     <td className="px-6 py-4 text-sm">
                       <span
                         className={`px-2 py-1 text-xs font-semibold rounded-full ${order.status === "pending"
@@ -186,7 +186,7 @@ export default function AdminDashboard() {
                     <td className="px-6 py-4 text-sm">
                       <button
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent row click event from firing
+                          e.stopPropagation(); 
                           handleOrderAction("success", order._id);
                         }}
                         className="text-green-500 hover:text-green-700 mx-2"
@@ -195,7 +195,7 @@ export default function AdminDashboard() {
                       </button>
                       <button
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent row click event from firing
+                          e.stopPropagation(); 
                           handleOrderAction("dispatch", order._id);
                         }}
                         className="text-blue-500 hover:text-blue-700 mx-2"
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
                       </button>
                       <button
                         onClick={(e) => {
-                          e.stopPropagation(); // Prevent row click event from firing
+                          e.stopPropagation();
                           handleOrderAction("delete", order._id);
                         }}
                         className="text-red-500 hover:text-red-700 mx-2"
@@ -221,12 +221,12 @@ export default function AdminDashboard() {
           {/* Order Details Modal */}
           {selectedOrder && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-              <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 text-zinc-400">
+              <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 text-black">
                 <div className="flex justify-between items-center">
                   <h2 className="text-xl font-semibold">Order Details</h2>
                   <button
                     onClick={() => setSelectedOrder(null)}
-                    className="text-gray-500 hover:text-gray-800"
+                    className="text-black hover:text-gray-800"
                   >
                     <FaTimes />
                   </button>
